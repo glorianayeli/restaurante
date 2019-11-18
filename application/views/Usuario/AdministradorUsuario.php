@@ -12,17 +12,23 @@
     </tr>
   </thead>
   <tbody>
-    <tr>
-      <th scope="row">1</th>
-      <td>glorianayeli100@hotmail.com</td>
-      <td>Mark</td>
-      <td>Otto</td>
+  <?php
+    foreach ($consulta->result() as $fila){
+  ?>
+      <tr>
+      <th scope="row"><?php echo $fila->us_id ?></th>
+      <td><?php echo $fila->us_correo_electronico ?></td>
+      <td><?php echo $fila->us_nombre ?></td>
+      <td><?php echo $fila->us_status ?></td>
       <td>
         <button type="button" class="btn btn-primary btn-sm">&#x270D;</button>
         <button type="button" class="btn btn-success btn-sm">&#x02713;</button>  
         <button type="button" class="btn btn-danger btn-sm">&#x2716;</button>
       </td>
     </tr>
+  <?php
+    }
+  ?>
   </tbody>
 </table>
 <!--Pagiación-->

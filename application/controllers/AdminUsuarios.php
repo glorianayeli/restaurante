@@ -11,13 +11,15 @@
             
             $this->ValidarInicioSesion();
             $this->load->library('pagination');
-            $this->load->model('mod_ingrediente');
+            $this->load->model('mod_adminUsuarios');
         }
         
         public function index()
         {
+            $result = $this->db->get('usuarios');
+            $data = array('consulta'=>$result);
             $this->load->view('Shared/header');
-            $this->load->view('Usuario/AdministradorUsuario');
+            $this->load->view('Usuario/AdministradorUsuario',$data);
             $this->load->view('Shared/footer');
         }
     
