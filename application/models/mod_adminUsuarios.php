@@ -11,19 +11,22 @@
             $this->db->initialize();
         }
         //Editar usuario
-        public function editarUsuario($correo){
+        public function editarUsuario($usuario){
 
         }
         //Elimiar usuario
-        public function eliminar($correo){
+        public function eliminar($usuario){
 
         }
         //Agregar usuario
-        public function agregar($correo){
+        public function agregar($usuario){
 
         }
         //Activar
-        public function activarUsuario($correo){
+        public function activarUsuario($usuario){
+
+        }
+        public function seleccionarUsuario(){
 
         }
     }

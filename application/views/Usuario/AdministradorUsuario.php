@@ -4,6 +4,7 @@
 <table class="table table-striped table-dark">
   <thead>
     <tr>
+      <th scope="col">ID</th>
       <th scope="col">Correo electrónico</th>
       <th scope="col">Nombre</th>
       <th scope="col">Estatus</th>
@@ -13,6 +14,7 @@
   <tbody>
     <tr>
       <th scope="row">1</th>
+      <td>glorianayeli100@hotmail.com</td>
       <td>Mark</td>
       <td>Otto</td>
       <td>
