@@ -22,6 +22,11 @@
             $this->load->view('Usuario/AdministradorUsuario',$data);
             $this->load->view('Shared/footer');
         }
+        public function form(){
+            $this->load->view('Shared/header');
+            $this->load->view('Usuario/formulariosUsuarios');
+            $this->load->view('Shared/footer');
+        }
     
     }
 ?>

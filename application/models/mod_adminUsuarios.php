@@ -29,8 +29,6 @@
         public function seleccionarUsuario($name=''){
             $this->db->query("SELECT * FROM usuarios WHERE usuarios ='".$name."' LIMIT 1");
             return $result->row();
-
-
         }
         public function obtenerUsuario(){
             return $this->db->get('usuarios');
