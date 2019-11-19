@@ -22,11 +22,22 @@
             $this->load->view('Usuario/AdministradorUsuario',$data);
             $this->load->view('Shared/footer');
         }
-        public function form(){
+
+
+        public function form($id = 0){
             $this->load->view('Shared/header');
             $this->load->view('Usuario/formulariosUsuarios');
             $this->load->view('Shared/footer');
         }
+        public function activarUsuario($id){
+            $this->mod_adminUsuarios->activarUsuario($id);
+        }
+        public function desactivarUsuario($id){
+            $this->mod_adminUsuarios->desactivarUsuario($id);
+        }
+
+
+        
     
     }
 ?>
