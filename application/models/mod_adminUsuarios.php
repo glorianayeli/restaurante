@@ -24,8 +24,15 @@
             $this->db->update('usuarios');
         }
         //Agregar usuario
-        public function agregar($data){
-            $this->db->insert('usuarios', $data);
+        public function agregar($data,$status,$usuario){
+            $this->db->WHERE('us_correo_electronico',$usuario);
+            $existeUsuario = $this->db->get('usuarios');
+            if(($_POST['correo']==$_POST['correoconfirm'])&&($_POST['contraseña']==$_POST['contraseñaconfirm'])&&$existeUsuario->num_rows()==0)
+            {
+                $this->db->insert('usuarios',$data);
+                $status=true;
+            }
+            return $status;
         }
         //Activar
         public function activarUsuario($id){

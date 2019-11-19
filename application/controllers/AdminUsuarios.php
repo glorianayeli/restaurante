@@ -35,9 +35,20 @@
         public function desactivarUsuario($id){
             $this->mod_adminUsuarios->desactivarUsuario($id);
         }
-
-
-        
-    
+        public function insertarDatos(){
+            $status = false;
+            $data = array(
+                    'us_nombre'=> $this->input->post('nombre'),
+                    'us_correo_electronico' => $this->input->post('correo'),
+                    'us_clave'=>md5($_POST['contraseña']),
+                    'us_status'=>'0'
+                );
+            $usuario = $this->input->post('correo');
+            $status = $this->mod_adminUsuarios->agregar($data,$status,$usuario);
+            if($status==true){
+                $this->session->set_flashdata('registroExitoso','Su registro fue exitoso');
+                //redirect('index');    
+            }
+        }
     }
 ?>
