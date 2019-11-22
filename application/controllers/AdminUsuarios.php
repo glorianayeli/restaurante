@@ -21,20 +21,15 @@
             $this->load->view('Shared/header');
             $this->load->view('Usuario/AdministradorUsuario',$data);
             $this->load->view('Shared/footer');
+            
         }
-
-
-        public function form($id = 0){
-            $this->load->view('Shared/header');
-            $this->load->view('Usuario/formulariosUsuarios');
-            $this->load->view('Shared/footer');
-        }
-        public function activarUsuario($id){
+        public function activarUsuario($id = 0){
             $this->mod_adminUsuarios->activarUsuario($id);
         }
-        public function desactivarUsuario($id){
+        public function desactivarUsuario($id = 0){
             $this->mod_adminUsuarios->desactivarUsuario($id);
         }
+        //crear un nuevo usuario
         public function insertarDatos(){
             $status = false;
             $data = array(
@@ -50,5 +45,28 @@
                 //redirect('index');    
             }
         }
+        public function form($id = 0){
+            $this->load->view('Shared/header');
+            $this->load->view('Usuario/formulariosusuarios');
+            $this->load->view('Shared/footer');
+        }
+        //editar usuario
+        public function editform($id = 0){
+            
+            $usuario = $this->mod_adminUsuarios->usuario($id);
+            $this->load->view('Shared/header');
+            $this->load->view('Usuario/editform',array('usuario'=>$usuario));
+            $this->load->view('Shared/footer');
+            /*$correo = $this->input->post('correo');
+            $clave = md5($_POST['pass']);
+            $this->mod_adminUsuarios->editarUsuario($id,$correo,$clave);*/
+        }
+
+        public function Guardar(){
+
+
+            $this->mod_adminUsuarios->editarUsuario();
+        }
+
     }
 ?>

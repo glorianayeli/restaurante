@@ -23,7 +23,7 @@
       <td><?php echo $fila->us_nombre ?></td>
       <td><?php echo $fila->us_status ?></td>
       <td>
-        <a href="<?php echo(base_url())?>AdminUsuarios/form/<?php echo $fila->us_id ?>" class="btn btn-primary btn-sm">&#x270D;</a>
+        <a href="<?php echo(base_url())?>AdminUsuarios/editform/<?php echo $fila->us_id ?>" class="btn btn-primary btn-sm">&#x270D;</a>
         <a href="<?php echo(base_url())?>AdminUsuarios/activarUsuario/<?php echo $fila->us_id ?>" class="btn btn-success btn-sm">&#x02713;</a>  
         <a href="<?php echo(base_url())?>AdminUsuarios/desactivarUsuario/<?php echo $fila->us_id ?>" class="btn btn-danger btn-sm">&#x2716;</a>
       </td>
