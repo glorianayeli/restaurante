@@ -1,10 +1,10 @@
 <div class="row mb-5">
     <div class="col-12 col-md-8">
         <h2>
-            Listado de ingredientes
+            Listado de Platillos
         </h2>
         <span>
-            Se encontraron <?php echo($totalRegistros); ?> ingredientes
+            Se encontraron <?php echo($totalRegistros); ?> Platillos
         </span>
     </div>
     <div class="col-12 col-md-4">
@@ -29,37 +29,33 @@
     <table class="table table-bordered col-12">
         <thead>
             <tr>
-                <td>Ingrediente</td>
-                <td>Unidad</td>
-                <td>Platillos</td>
+                <td>Platillo</td>
+                <td>Descripcion</td>
+                <td>Precio</td>
                 <td>Acciones</td>
             </tr>
         </thead>
         <tbody>
             <?php 
-                foreach($registros as $ingrediente):
+                foreach($registros as $platillo):
             ?>
                 <tr>
                     <td>
-                        <?php echo($ingrediente['in_nombre']); ?>
+                        <?php echo($platillo['pa_nombre']); ?>
                     </td>
                     <td class="text-center">
-                        <?php echo($ingrediente['in_unidad']); ?>
+                        <?php echo($platillo['pa_descripcion']); ?>
                     </td>
                     <td class="text-center">
-                        <span class="badge badge-<?php echo(($ingrediente['totalPlatillos'] == 0 ? 'warning' : 'info')); ?>">
-                            <?php echo($ingrediente['totalPlatillos']); ?>
-                        </span>
+                        <?php echo("$".$platillo['pa_precio']); ?>
                     </td>
                     <td class="text-center">
-                        <a href="<?php echo(base_url('Ingrediente/Formulario/'.$ingrediente['in_id'])); ?>" class="btn btn-primary btn-sm">
+                        <a href="<?php echo(base_url('Platillos/Platillosedit/'.$platillo['pa_id'])); ?>" class="btn btn-primary btn-sm">
                             <span class="fas fa-pencil-alt"></span>
                         </a>
-                        <?php if($ingrediente['totalPlatillos'] == 0): ?>
-                            <a href="<?php echo(base_url('Ingrediente/Eliminar/'.$ingrediente['in_id'])); ?>" class="btn btn-danger btn-sm">
-                                <span class="fas fa-trash-alt"></span>
-                            </a>
-                        <?php endif; ?>
+                        <a href="<?php echo(base_url('Platillos/Eliminar/'.$platillo['pa_id'])); ?>" class="btn btn-danger btn-sm">
+                            <span class="fas fa-trash-alt"></span>
+                        </a>
                     </td>
                 </tr>
             <?php 
@@ -67,13 +63,4 @@
             ?>
         </tbody>
     </table>
-</div>
-<div class="row">
-    <div class="col-12">
-        <nav aria-label="Page navigation example">
-            <?php if(isset($links)): ?>
-                <?php echo $links ?>
-            <?php endif; ?>
-        </nav>
-    </div>
 </div>

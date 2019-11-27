@@ -11,7 +11,7 @@
             
             $this->ValidarInicioSesion();
             $this->load->library('pagination');
-            $this->load->model('mod_ingrediente');
+            $this->load->model('mod_platillo');
             
         }
         
@@ -20,17 +20,8 @@
             $pagina = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
 
             $params['response'] = $this->session->flashdata('response');
-
-            $params['registros'] = $this->mod_ingrediente->Listado($pagina);
-            $params['totalRegistros'] = $this->mod_ingrediente->Total();
-            if($params['registros']){                
-                $config = $this->ConfigurarPaginacion(
-                    base_url().'Ingrediente/Index',
-                    $params['totalRegistros']
-                );
-                $this->pagination->initialize($config);
-                $params["links"] = $this->pagination->create_links();
-            }
+            $params['registros'] = $this->mod_platillo->Listado($pagina);
+            $params['totalRegistros'] = $this->mod_platillo->Total();
 
             $this->load->view('Shared/header');
             $this->load->view('Platillos/Listadoplatillos', $params);
@@ -40,6 +31,15 @@
         public function guardar(){
             $this->load->view('Shared/header');
             $this->load->view('Platillos/Platillosform');
+            $this->load->view('Shared/footer');
+        }
+
+        public function Eliminar($id = 0){
+            $this->mod_platillo->Eliminar($id);
+        }
+        public function Platillosedit(){
+            $this->load->view('Shared/header');
+            $this->load->view('Platillos/Platillosedit');
             $this->load->view('Shared/footer');
         }
     
