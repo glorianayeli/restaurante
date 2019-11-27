@@ -1,4 +1,4 @@
-<?php
+﻿<?php
     
     defined('BASEPATH') OR exit('No direct script access allowed');
     
@@ -11,11 +11,12 @@
             $this->db->initialize();
         }
         //Editar usuario
-        public function editarUsuario(){
-            if(($_POST['lastpass']==$usuario['us_clave'])&&($_POST['pass']==$_POST['passConfirm']))
+        public function editarUsuario($usuario){
+            if((md5($_POST['lastpass'])==$usuario['us_clave'])&&($_POST['pass']==$_POST['passConfirm']))
             {
-                $correo = $_POST['pass'];
-                $pass = $_POST['correo'];
+                $id = $_POST['id'];
+                $correo = $_POST['correo'];
+                $pass = md5($_POST['pass']);
                 $this->db->where('us_id', $id);
                 $this->db->set('us_correo_electronico', $correo);
                 $this->db->set('us_clave',$pass);

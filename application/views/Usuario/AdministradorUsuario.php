@@ -1,6 +1,12 @@
 <a href="<?php echo(base_url())?>AdminUsuarios/form">
   <button type="button" class="btn btn-secondary float-right mt-2">Nuevo</button>
 </a>
+<!--Flashdata-->
+<?php if($exitoso = $this->session->flashdata('exitoso')):?>
+    <div class="alert alert-success text-center col-4 text-center mx-auto">
+      <?php echo $this->session->flashdata('exitoso'); ?>
+    </div>
+<?php endif; ?>            
 <h1 class="mb-5">Usuarios</h1>  
 <!--Table-->
 <table class="table table-striped table-dark">

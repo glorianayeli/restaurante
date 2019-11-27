@@ -5,7 +5,8 @@
                 <?php echo $this->session->flashdata('registroError'); ?>
             </div>
         <?php endif; ?>
-        <form class="needs-validation col-8 mx-auto" novalidate="" action="<?php echo(base_url('AdminUsuarios/Guardar'))?>" method="POST">
+        <form class="needs-validation col-8 mx-auto" novalidate="" action="<?php echo(base_url('AdminUsuarios/Guardar'))?>" method="POST">  
+             <input type="hidden" class="form-control col-8" id="" name="id" value="<?php echo $usuario['us_id']?>">
             <div class="mb-3">
                 <label for="email">Correo</label>
                 <input type="text" class="form-control col-8" id="" name="correo" value="<?php echo $usuario['us_correo_electronico']?>">
@@ -36,7 +37,7 @@
             </div>
             <div class="mb-3">
                 <label for="email">Confirmar contraseña</label>
-                <input type="password" class="form-control col-6" id="" name="passconfirm">
+                <input type="password" class="form-control col-6" id="" name="passConfirm">
                 <div class="invalid-feedback">
                     Por favor ingresa un correo valido.
                 </div>

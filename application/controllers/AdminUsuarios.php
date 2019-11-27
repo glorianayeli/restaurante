@@ -25,9 +25,13 @@
         }
         public function activarUsuario($id = 0){
             $this->mod_adminUsuarios->activarUsuario($id);
+            $this->session->set_flashdata('exitoso','Usuario editado exitosamete');
+            return redirect('AdminUsuarios');
         }
         public function desactivarUsuario($id = 0){
             $this->mod_adminUsuarios->desactivarUsuario($id);
+            $this->session->set_flashdata('exitoso','Usuario editado exitosamete');
+            return redirect('AdminUsuarios');
         }
         //crear un nuevo usuario
         public function insertarDatos(){
@@ -41,8 +45,8 @@
             $usuario = $this->input->post('correo');
             $status = $this->mod_adminUsuarios->agregar($data,$status,$usuario);
             if($status==true){
-                $this->session->set_flashdata('registroExitoso','Su registro fue exitoso');
-                //redirect('index');    
+                $this->session->set_flashdata('exitoso','Usuario editado exitosamente');
+                redirect('AdminUsuarios');    
             }
         }
         public function form($id = 0){
@@ -52,7 +56,6 @@
         }
         //editar usuario
         public function editform($id = 0){
-            
             $usuario = $this->mod_adminUsuarios->usuario($id);
             $this->load->view('Shared/header');
             $this->load->view('Usuario/editform',array('usuario'=>$usuario));
@@ -63,9 +66,10 @@
         }
 
         public function Guardar(){
-
-
-            $this->mod_adminUsuarios->editarUsuario();
+            $usuario = $this->mod_adminUsuarios->usuario($this->input->post('id'));
+            $this->mod_adminUsuarios->editarUsuario($usuario);
+            $this->session->set_flashdata('exitoso','Usuario editado exitosamete');
+            return redirect('AdminUsuarios');
         }
 
     }

@@ -30,8 +30,8 @@ class Usuario extends MY_Controller {
             $this->load->model('mod_usuario');
             
             $usuario = $this->mod_usuario->IniciarSesion($this->input->post('correo'), $this->input->post('clave'));
-            if($usuario){
-
+            $status = $usuario->us_status;
+            if(($usuario)&&($status=='1')){
                 $this->session->set_userdata(
                     'user', 
                     array(
