@@ -45,9 +45,9 @@
             $usuario = $this->input->post('correo');
             $status = $this->mod_adminUsuarios->agregar($data,$status,$usuario);
             if($status==true){
-                $this->session->set_flashdata('exitoso','Usuario editado exitosamente');
-                redirect('AdminUsuarios');    
+                $this->session->set_flashdata('exitoso','Usuario editado exitosamente');    
             }
+            redirect('AdminUsuarios');
         }
         public function form($id = 0){
             $this->load->view('Shared/header');
