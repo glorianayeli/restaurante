@@ -37,11 +37,15 @@
         public function Eliminar($id = 0){
             $this->mod_platillo->Eliminar($id);
         }
-        public function Platillosedit(){
+        public function Platillosedit($id){
+            $data = $this->mod_platillo->usuario($id);
+            var_dump($data);
             $this->load->view('Shared/header');
-            $this->load->view('Platillos/Platillosedit');
+            $this->load->view('Platillos/Platillosedit',array('data'=>$data));
             $this->load->view('Shared/footer');
         }
-    
+        public function guardarPlatillo(){
+            $this->mod_platillo->editarIngrediente();
+        }
     }
 ?>

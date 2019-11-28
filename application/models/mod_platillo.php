@@ -34,31 +34,6 @@
 
             return false;
         }
-
-        // Obtiene la información de un platillo
-        public function Obtener($id)
-        { /*
-            $this->db->select('
-                *,
-                (
-                    select
-                        count(pi_id_ingrediente)
-                    from
-                        platillos_ingredientes
-                    where
-                    pi_id_ingrediente = in_id                 
-                ) as totalPlatillos
-            ');
-
-            $response = 
-                $this->db
-                    ->from('usuarios')
-                    ->where("in_id = $id")
-                    ->get('ingredientes');
-    
-            return ($response->num_rows() > 0) ? $response->row(0) : false;*/
-        }
-
         // Obtiene el total de registros de ingredientes
         public function Total()
         {
@@ -68,9 +43,13 @@
         // ELimina un ingrediente
         public function Eliminar($id)
         {
-            //$this->db->delete('platillos', array('pa_id' => $id));
+            $this->db->delete('platillos', array('pa_id' => $id));
         }
-
+        //Obtiene la información de un ingrediente
+        public function usuario($id){
+            $usuario=$this->db->get_where('platillos',array('platillos.pa_id'=>$id),1);
+            return $usuario->row_array();
+        }
         // Guarda un ingrediente
         public function Guardar()
         {
@@ -99,7 +78,20 @@
 
             return $response;
         }
-    
+        //Edita un ingrediente
+        public function editarIngrediente(){
+                $pa_id = $_POST['pa_id'];
+                $pa_nombre = $_POST['pa_nombre'];
+                $pa_descripcion = $_POST['pa_descripcion'];
+                $pa_precio = $_POST['pa_precio'];
+                $pa_id_tipo_comida = $_POST['pa_id_tipo_comida'];
+                $this->db->where('pa_id', $pa_id);
+                $this->db->set('pa_nombre', $pa_nombre);
+                $this->db->set('pa_descripcion',$pa_descripcion);
+                $this->db->set('pa_precio',$pa_precio);
+                $this->db->set('pa_id_tipo_comida',$pa_id_tipo_comida);
+                $this->db->update('platillos');
+        }
         // Verifica si existe un ingrediente 
         public function Existe($id, $nombre, $unidad)
         {

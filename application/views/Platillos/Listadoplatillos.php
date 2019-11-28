@@ -53,7 +53,7 @@
                         <a href="<?php echo(base_url('Platillos/Platillosedit/'.$platillo['pa_id'])); ?>" class="btn btn-primary btn-sm">
                             <span class="fas fa-pencil-alt"></span>
                         </a>
-                        <a href="<?php echo(base_url('Platillos/Eliminar/'.$platillo['pa_id'])); ?>" class="btn btn-danger btn-sm">
+                        <a href="#" class="btn btn-danger btn-sm">
                             <span class="fas fa-trash-alt"></span>
                         </a>
                     </td>
@@ -64,3 +64,36 @@
         </tbody>
     </table>
 </div>
+<!--Script para button-->
+<script>
+function EliminarProducto(){
+        $.confirm({
+            title: 'Confirm!',
+            content: 'Simple confirm!',
+        buttons: {
+            confirm: function () {
+                $.alert('Confirmed!');
+            },
+            cancel: function () {
+                $.alert('Canceled!');
+            },
+        somethingElse: {
+            text: 'Something else',
+            btnClass: 'btn-blue',
+            keys: ['enter', 'shift'],
+            action: function(){
+                $.alert('Something else?');
+                }
+            }
+        }
+        });
+}
+function AsignarEventosBotones(){
+    document.querySelectorAll('.btn-danger').forEach(item =>{
+        item.addEventListener('click', EliminarProducto);
+    });
+}
+document.addEventListener('DOMContentLoaded', function(event){
+        AsignarEventosBotones();
+});
+</script>
