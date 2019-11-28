@@ -91,6 +91,7 @@
                 $this->db->set('pa_precio',$pa_precio);
                 $this->db->set('pa_id_tipo_comida',$pa_id_tipo_comida);
                 $this->db->update('platillos');
+                
         }
         // Verifica si existe un ingrediente 
         public function Existe($id, $nombre, $unidad)
