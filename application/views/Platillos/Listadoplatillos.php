@@ -53,7 +53,7 @@
                         <a href="<?php echo(base_url('Platillos/Platillosedit/'.$platillo['pa_id'])); ?>" class="btn btn-primary btn-sm">
                             <span class="fas fa-pencil-alt"></span>
                         </a>
-                        <a href="#" class="btn btn-danger btn-sm">
+                        <a href="#" class="btn btn-danger btn-sm btn-elim" data-elim="<?php echo(base_url('Platillos/Eliminar/'.$platillo['pa_id'])); ?>">
                             <span class="fas fa-trash-alt"></span>
                         </a>
                     </td>
@@ -66,34 +66,26 @@
 </div>
 <!--Script para button-->
 <script>
-function EliminarProducto(){
-        $.confirm({
-            title: 'Confirm!',
-            content: 'Simple confirm!',
+function EliminarProducto(item){
+    $.confirm({
+        title: 'Eliminar Platillos',
+        content: "¿Seguro que quieres eliminar el platillo?",
         buttons: {
-            confirm: function () {
-                $.alert('Confirmed!');
+            confirmar: function () {
+                window.location.replace(item.getAttribute("data-elim"))
             },
-            cancel: function () {
-                $.alert('Canceled!');
-            },
-        somethingElse: {
-            text: 'Something else',
-            btnClass: 'btn-blue',
-            keys: ['enter', 'shift'],
-            action: function(){
-                $.alert('Something else?');
-                }
+            cancelar: function () {
+                return
             }
         }
-        });
-}
-function AsignarEventosBotones(){
-    document.querySelectorAll('.btn-danger').forEach(item =>{
-        item.addEventListener('click', EliminarProducto);
     });
 }
-document.addEventListener('DOMContentLoaded', function(event){
-        AsignarEventosBotones();
-});
+function AsignarEventosBotones(){
+    document.querySelectorAll('.btn-elim').forEach(item =>{
+        item.addEventListener('click', function() {
+            EliminarProducto(item)
+        });
+    });
+}
+document.addEventListener('DOMContentLoaded', AsignarEventosBotones);
 </script>

@@ -18,23 +18,23 @@
 
         // Define los recursos css base
         public function DefineCssResources()
-{
-    $this->carabiner->css(array(
-        array('/libs/bootstrap/bootstrap.min.css'),
-        array('https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.css')
-    ));
-}
+        {
+            $this->carabiner->css(array(
+                array('/libs/bootstrap/bootstrap.min.css'),
+                array('https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.css')
+            ));
+        }
 
-// Define los recursos js base
-public function DefineJsResources()
-{
-    $this->carabiner->js(array(
-        array('https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js'),
-        array('https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.js'),
-        array('/libs/bootstrap/bootstrap.min.js'),
-        array('/libs/fontawesome/all.js')
-    ));
-}
+        // Define los recursos js base
+        public function DefineJsResources()
+        {
+            $this->carabiner->js(array(
+                array('https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js'),
+                array('https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.js'),
+                array('/libs/bootstrap/bootstrap.min.js'),
+                array('/libs/fontawesome/all.js')
+            ));
+        }
         
         // Valida que exista una sesión activa
         public function ValidarInicioSesion()

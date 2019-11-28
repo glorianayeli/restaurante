@@ -23,7 +23,6 @@
                         platillos          
                 ) as totalPlatillos
             ');
-            //$this->db->limit(PAGINACION_REGISTROS_POR_PAGINA, $pagina);
             $query = $this->db->get("platillos");
     
             if ($query->num_rows() > 0) 
@@ -34,25 +33,52 @@
 
             return false;
         }
+
+        // Obtiene la información de un platillo
+        public function Obtener($id)
+        {   
+            
+            $this->db->select('*');
+
+            $response = 
+                $this->db
+                    ->from('platillos')
+                    ->where("pa_id = $id")
+                    ->get();
+    
+            return ($response->num_rows() > 0) ? $response->row(0) : false;
+        }
+
         // Obtiene el total de registros de ingredientes
         public function Total()
         {
-            return $this->db->count_all("ingredientes");
+            return $this->db->count_all("platillos");
         }
 
         // ELimina un ingrediente
         public function Eliminar($id)
         {
-            $this->db->delete('platillos', array('pa_id' => $id));
+            $response = array(
+                'message' => 'No se pudo eliminar el platillo',
+                'done' => false
+            );
+
+            $platillo = $this->Obtener($id);
+            if ($platillo){
+                $this->db->where('pa_id', $id);
+                $this->db->delete('platillos');
+
+                $response['message'] = 'Se eliminó el platillo';
+                $response['done'] = true;
+            }else
+                $response['message'] = ' No existe el platillo que intenta eliminar';
+            
+            return $response;
         }
-        //Obtiene la información de un ingrediente
-        public function usuario($id){
-            $usuario=$this->db->get_where('platillos',array('platillos.pa_id'=>$id),1);
-            return $usuario->row_array();
-        }
+
         // Guarda un ingrediente
         public function Guardar()
-        {
+        {   /*
             $response = array(
                 'done' => false,
                 'message' => 'Llene todos los campos solicitados'
@@ -76,10 +102,10 @@
             $response['message'] = 'Se guardó la información del ingrediente';
             $response['done'] = true;
 
-            return $response;
+            return $response;*/
         }
-        //Edita un ingrediente
-        public function editarIngrediente(){
+
+        public function editarIngrediente(){/*
                 $pa_id = $_POST['pa_id'];
                 $pa_nombre = $_POST['pa_nombre'];
                 $pa_descripcion = $_POST['pa_descripcion'];
@@ -91,10 +117,13 @@
                 $this->db->set('pa_precio',$pa_precio);
                 $this->db->set('pa_id_tipo_comida',$pa_id_tipo_comida);
                 $this->db->update('platillos');
+            return $response;*/
         }
+    
         // Verifica si existe un ingrediente 
         public function Existe($id, $nombre, $unidad)
         {
+            /*
             $existe = 
                 (
                     $this->db
@@ -102,7 +131,8 @@
                         ->get("ingredientes")->num_rows() > 0
                 );
 
-            return $existe;                
+            return $existe;  
+            */              
         }
 
     }
