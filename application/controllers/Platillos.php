@@ -45,13 +45,15 @@
 
         public function Platillosedit($id){
             $data = $this->mod_platillo->usuario($id);
-            var_dump($data);
             $this->load->view('Shared/header');
             $this->load->view('Platillos/Platillosedit',array('data'=>$data));
             $this->load->view('Shared/footer');
         }
         public function guardarPlatillo(){
             $this->mod_platillo->editarIngrediente();
+            $this->session->set_flashdata('exitoso','Usuario editado exitosamente');
+            $this->index();
+        
         }
 
         public function Eliminar($id)

@@ -1,3 +1,8 @@
+<?php if($exitoso = $this->session->flashdata('exitoso')):?>
+      <div class="alert alert-success text-center col-4 text-center mx-auto">
+        <?php echo $this->session->flashdata('exitoso'); ?>
+      </div>
+<?php endif; ?>
 <div class="row mb-5">
     <div class="col-12 col-md-8">
         <h2>
